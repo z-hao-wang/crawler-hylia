@@ -26,7 +26,7 @@ var c = new Crawler({
  * Craw all songs url based on albums in database
  */
 var idFrom = 0;
-var idTo = 5000;
+var idTo = 20000;
 connection.query('SELECT * FROM `hylia`.`anime_mp3_albums` WHERE album_id >= ' + idFrom + ' AND album_id < ' + idTo, function(err, rows, fields) {
     if (err) throw err;
     for (var i = 0; i < rows.length; i++) {
