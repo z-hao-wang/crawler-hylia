@@ -5,7 +5,7 @@ Crawer of http://anime.thehylia.com/soundtracks
 
 Usage
 =============
-1. Set up local/remote mysql database using hylia.sql
+1. Set up local/remote mysql database using hylia.sql. Rename config.sample.js to config.js and update the configs.
 2. ```npm install git://github.com/z-hao-wang/node-crawler.git```
 3. set up config.js for directory info and database credentials.
 4. run ```node craw_albums.js ``` to grab all albums. 
