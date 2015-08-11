@@ -81,6 +81,7 @@ function queueNext() {
         }
         for (var i = 0; i < rows.length; i++) {
             var album_title = rows[i].album_title.toFileName();
+            console.log("queue url: " + rows[i].url.trim() + " id: " + rows[i].id);
             c.queue({
                 uri: rows[i].url.trim(),
                 data: {

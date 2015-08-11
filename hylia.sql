@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2014 at 01:33 AM
--- Server version: 5.6.20
--- PHP Version: 5.4.24
+-- Generation Time: Aug 11, 2015 at 08:20 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.5.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,8 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `anime_mp3_albums` (
 `album_id` int(11) NOT NULL,
   `url` varchar(200) NOT NULL,
-  `title` varchar(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4628 DEFAULT CHARSET=latin1;
+  `title` varchar(100) NOT NULL,
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=9255 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -40,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `anime_mp3_albums` (
 
 CREATE TABLE IF NOT EXISTS `anime_mp3_songs` (
 `id` int(11) NOT NULL,
-  `url` varchar(200) NOT NULL,
+  `url` varchar(1000) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `mp3_url` varchar(200) NOT NULL,
+  `mp3_url` varchar(1000) NOT NULL,
   `album_id` int(11) NOT NULL,
   `to_download` int(16) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=58682 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=101610 DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -71,12 +72,12 @@ ALTER TABLE `anime_mp3_songs`
 -- AUTO_INCREMENT for table `anime_mp3_albums`
 --
 ALTER TABLE `anime_mp3_albums`
-MODIFY `album_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4628;
+MODIFY `album_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9255;
 --
 -- AUTO_INCREMENT for table `anime_mp3_songs`
 --
 ALTER TABLE `anime_mp3_songs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=58682;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=101610;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
