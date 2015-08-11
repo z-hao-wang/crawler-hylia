@@ -12,3 +12,7 @@ Usage
 5. run ```node craw_songs.js``` to grab all songs
 6. mark in database what do you want to download
 7. run ```node download_mp3.js``` to download all files marked in step 5
+
+hylia-browser
+=============
+The browser is based on PHP code igniter and grocery crud. A cheap simple implementation. You can setup the website on any http server. The website allows you to browse songs and mark them download easily.
