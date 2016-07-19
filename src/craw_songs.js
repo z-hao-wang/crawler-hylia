@@ -10,7 +10,8 @@ var c = new Crawler({
     "callback": function(error, result, $) {
         var album_id = this.data.album_id;
         // $ is a jQuery instance scoped to the server-side DOM of the page
-        $("#content_container table.blog a").each(function(index, a) {
+        $("a").each(function(index, a) {
+        
             var title = $(a).html().trim();
             var url = $(a).attr('href').trim();
             if (/^http:\/\/anime.thehylia.com\/soundtracks\/album/.test(url)) {
@@ -25,12 +26,12 @@ var c = new Crawler({
 /*
  * Craw all songs url based on albums in database
  */
-var idFrom = 0;
+var idFrom = 5300;
 var idTo = 20000;
 connection.query('SELECT * FROM `hylia`.`anime_mp3_albums` WHERE album_id >= ' + idFrom + ' AND album_id < ' + idTo, function(err, rows, fields) {
     if (err) throw err;
     for (var i = 0; i < rows.length; i++) {
-        console.log('queue', rows[i].id, rows[i].url);
+        console.log('queue', rows[i].album_id, rows[i].url);
         c.queue({
             uri: rows[i].url,
             data: {
