@@ -3,7 +3,7 @@
  * Hylia limit users to single thread. we we have to queue next download on finishing previous downloading
  *
  */
-var Crawler = require("crawler").Crawler;
+var Crawler = require("crawler");
 var config = require('./config');
 var connection = config.connection;
 var sys = require('sys');
@@ -19,10 +19,18 @@ var c = new Crawler({
     "callback": function(error, result, $) {
         var song_id = this.data.song_id;
         var album_title = this.data.album_title;
+        function handleError() {
+          console.log('error for song id=' + song_id);
+          connection.query('UPDATE `anime_mp3_songs` SET to_download = 0 WHERE id=' + song_id, function () {
+            queueNext();
+          });
+        }
         // $ is a jQuery instance scoped to the server-side DOM of the page
         var els = $("#content_container table.blog a");
-        if (els.length == 0) { //empty result. just do next
-            queueNext();
+        if (els.length == 0) { //empty result. just do next and skip current
+            song_id
+            console.log('error empty result for song id=' + song_id);
+            handleError();
             return;
         }
         var counter = 0;
@@ -66,7 +74,7 @@ var c = new Crawler({
             } else if (counter == els.length) {
                 //we did not found a download link. 
                 //queue next
-                queueNext();
+                handleError();
             }
         });
     }
@@ -81,7 +89,7 @@ function queueNext() {
         }
         for (var i = 0; i < rows.length; i++) {
             var album_title = rows[i].album_title.toFileName();
-            console.log("queue url: " + rows[i].url.trim() + " id: " + rows[i].id);
+            console.log("queue url: " + rows[i].url.trim() + " id: " + rows[i].id + ' album_id:' + rows[i].album_id);
             c.queue({
                 uri: rows[i].url.trim(),
                 data: {

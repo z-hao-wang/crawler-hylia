@@ -8,5 +8,9 @@
     "grunt-contrib-qunit": "~0.5.2",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-jsbeautifier": "^0.2.7"
+  },
+  "dependencies": {
+    "crawler": "git://github.com/z-hao-wang/node-crawler.git",
+    "mysql": "^2.11.1"
   }
 }
